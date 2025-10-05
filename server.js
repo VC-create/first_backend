@@ -7,12 +7,18 @@ const app = express();
 //the port given by them
 const PORT = 8000;
 
+let data={
+    name:"vedika"
+}
 
-//add the HTTP verbs (GET, POST, etc) and routes(paths like /dashbaord, etc)
-
+//can seperate endpoints into website endpoints and API endpoints
+//wesbite endpoints send back html and typically when a user enters url in browser
 //this is our home route with just one slash
 //together these create the endpoint: the HTTP verb tells which type of request it is 
 // and the route tells where to go and what to do 
+
+
+//add the HTTP verbs (GET, POST, etc) and routes(paths like /dashbaord, etc)
 app.get('/', (req,res)=>{
     //this is also called an endpoint and its the / route
     //console.log("Yay I hit an endpoint", req.method);
@@ -23,13 +29,16 @@ app.get('/', (req,res)=>{
 });
 
 app.get('/dashboard',(req,res)=>{
-    console.log("this is the /dashbaord endpoint");
-    res.send("hi");
+    //console.log("this is the /dashbaord endpoint");
+    res.send("<h1>dashbaord<h1>");
 });
 
-//can seperate endpoints into website endpoints and API endpoints
-//wesbite endpoints send back html and typically when a user enters url in browser
-//API endpoints is when the user submits something and it redirects them
+//API endpoints is when the user submits something and it redirects them (nonvisual)
+app.get('/api/data',(req,res)=>{
+    console.log("this is for data");
+    res.send(data);
+});
+
 
 //starting a server
 //this needs to be at the very bottom because the code needs to be configured
