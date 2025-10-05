@@ -1,11 +1,11 @@
 //importing express into codebase
-const express = require('express');
+import express from "express"
 
 const app = express();
 
 //the adress of this server is what is started by github codespaces
 //the port given by them
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 let data=[
     "vedika"
