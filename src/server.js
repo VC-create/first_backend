@@ -7,9 +7,12 @@ const app = express();
 //the port given by them
 const PORT = 8000;
 
-let data={
-    name:"vedika"
-}
+let data=[
+    "vedika"
+]
+
+//Middleware
+app.use(express.json())
 
 //can seperate endpoints into website endpoints and API endpoints
 //wesbite endpoints send back html and typically when a user enters url in browser
@@ -25,7 +28,13 @@ app.get('/', (req,res)=>{
     //res.sendStatus(200);
 
     //you can send the page html code and that's how it creates the website
-    res.send('<h1>this is actually a website now (html page)<input>')
+    res.send(`
+        <body style="background:pink color:blue">
+        <h1>DATA</h1>
+            <p>${JSON.stringify(data)}</p>
+            <a href="/dashboard">Dashboard</a>
+        </body>
+        `);
 });
 
 app.get('/dashboard',(req,res)=>{
@@ -34,11 +43,23 @@ app.get('/dashboard',(req,res)=>{
 });
 
 //API endpoints is when the user submits something and it redirects them (nonvisual)
+
+//method is in paranthesis - HTTP verb in parathesis
+//CRUD = create (post), read (get), update(put), delete (delete)
+
 app.get('/api/data',(req,res)=>{
     console.log("this is for data");
     res.send(data);
 });
 
+app.post('/api/data', (req,res)=>{
+    //someone wants to create a user when they press a sign up button
+    //the user clicks on the sign up button and their browser is wired to
+    //send out a network request to the server to hangle that action
+    const newEntry = req.body
+    data.push(newEntry.name)
+    res.sendStatus(201)
+});
 
 //starting a server
 //this needs to be at the very bottom because the code needs to be configured

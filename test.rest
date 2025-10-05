@@ -1,0 +1,16 @@
+### TEST GET / WEBSITE
+GET https://cautious-broccoli-q7474xrw5rqwc669-8000.app.github.dev/
+
+###TEST GET /dashboard WEBSITE
+GET https://cautious-broccoli-q7474xrw5rqwc669-8000.app.github.dev/dashboard
+
+### DATA ENDPOINT
+GET https://cautious-broccoli-q7474xrw5rqwc669-8000.app.github.dev/api/data
+
+### DATA ENDPOINT FOR ADDING A USER
+POST https://cautious-broccoli-q7474xrw5rqwc669-8000.app.github.dev/api/data
+Content-Type: application/json
+
+{
+    "name":"vvvvvvvv"
+}
